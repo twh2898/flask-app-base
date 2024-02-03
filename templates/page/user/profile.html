@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{{ g.user['username'] }}</h1>
+{% endblock %}
+
+{% block content %}
+<table class="table">
+    <tbody>
+        <tr>
+            <td>Username</td>
+            <td>{{ g.user['username'] }}</td>
+        </tr>
+        <tr>
+            <td>Roles</td>
+            <td>{{ g.user_roles }}</td>
+        </tr>
+        <tr>
+            <td>Created</td>
+            <td>{{ g.user['created'] }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% macro c2forminput(label, type="text", help="", disabled=false, value="") %}
+<div class="col mb-3">
+    <label for="{{ label }}" class="form-label">{{ label }}</label>
+    <input type="{{ type }}" class="form-control" id="{{ label }}" value="{{ value }}" {% if(disabled) %}disabled{%
+        endif %} />
+    <div class="form-text">{{ help }}</div>
+</div>
+{% endmacro %}
+{% macro c2formtextarea(label, help="", disabled=false, value="") %}
+<div class="col mb-3">
+    <label for="{{ label }}" class="form-label">{{ label }}</label>
+    <textarea class="form-control" id="{{ label }}" {% if(disabled) %}disabled{% endif %}>{{ value }}</textarea>
+    <div class="form-text">{{ help }}</div>
+</div>
+{% endmacro %}
+{% macro c2formchoice(label, help="", options=[], disabled=false, value="") %}
+<div class="col mb-3">
+    <label for="{{ label }}" class="form-label">{{ label }}</label>
+    <select class="form-select" value="{{ value }}">
+        {% for item in options %}
+        <option value="{{ item }}">{{ item }}</option>
+        {% endfor %}
+    </select>
+    <div class="form-text">{{ help }}</div>
+</div>
+{% endmacro %}

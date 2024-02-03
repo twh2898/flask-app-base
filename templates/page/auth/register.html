@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>Register</h1>
+{% endblock %}
+
+{% block content %}
+<form action="{{ url_for('auth.register') }}" method="POST" class="w-50 p-3 mx-auto border rounded">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" autocomplete="username" class="form-control" id="username">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="password" aria-describedby="passwordHelp">
+        <div id="passwordHelp" class="form-text">We'll never share your password with anyone else.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Create User</button>
+</form>
+{% endblock %}

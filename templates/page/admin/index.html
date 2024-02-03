@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>Admin</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Users</h2>
+    <a href="{{ url_for('admin.users') }}">Manage Users</a>
+</div>
+<div>
+    <h2>Roles</h2>
+    <a href="{{ url_for('admin.roles') }}">Manage Roles</a>
+</div>
+<div>
+    <h2>Activity</h2>
+</div>
+{% endblock %}
