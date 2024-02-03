@@ -6,6 +6,7 @@ app = Flask(__name__, static_folder='static',
             template_folder='templates')
 app.secret_key = 'SECRET TUNNEL'
 app.config['DATABASE'] = 'main.db'
+app.config['DARK_MODE'] = True
 init_app(app)
 
 
