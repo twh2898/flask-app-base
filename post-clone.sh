@@ -10,6 +10,8 @@ source .venv/bin/activate
 
 python3 -m pip install -r requirements.txt
 
+flask --app server init-db
+
 deactivate
 
 echo "Finished Post Clone in $((SECONDS - START)) s"
