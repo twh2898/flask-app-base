@@ -1,11 +1,11 @@
 <tr hx-target="this" hx-swap="outerHTML">
-    <form hx-put="{{ url_for('admin.role_edit') }}?role={{ role }}">
+    <form hx-put="{{ url_for('admin.role.edit') }}?role={{ role }}">
         <td>
             <input type="text" class="form-control" name="role" value="{{ role }}">
         </td>
         <td>
             <input type="submit" class="btn btn-primary btn-sm">
-            <button hx-get="{{ url_for('admin.role_view') }}" class="btn btn-Secondary btn-sm">Cancel</button>
+            <button hx-get="{{ url_for('admin.role.view') }}" class="btn btn-Secondary btn-sm">Cancel</button>
         </td>
         <td>
             <button class="btn btn-danger btn-sm">Delete</button>

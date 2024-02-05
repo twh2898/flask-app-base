@@ -32,7 +32,6 @@ def register_admin(db):
     password_hash = bcrypt.hashpw(password, salt)
     db.execute('INSERT INTO user (username, password) VALUES (?, ?)',
                (username, password_hash))
-    db.execute('INSERT INTO role (name) VALUES ("admin")')
     db.commit()
     db.execute('INSERT INTO user_role (uid, rid) SELECT '
                '(SELECT id FROM user WHERE username = "admin") as uid, '
