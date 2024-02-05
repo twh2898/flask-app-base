@@ -1,0 +1,16 @@
+<table id="role-table" class="table">
+    <thead>
+        <tr>
+            <th>Role Name</th>
+            <th style="width: 10em">Edit</th>
+            <th style="width: 10em">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for role in roles %}
+            {% with id=role['id'], name=role['name'] %}
+            {% include 'page/admin/role/row_view.html' %}
+            {% endwith %}
+        {% endfor %}
+    </tbody>
+</table>

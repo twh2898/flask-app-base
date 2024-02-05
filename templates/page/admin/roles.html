@@ -5,21 +5,6 @@
 {% endblock %}
 
 {% block content %}
-<button class="btn btn-primary">Add User</button>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Role Name</th>
-            <th style="width: 10em">Edit</th>
-            <th style="width: 10em">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for role in roles %}
-            {% with role=role %}
-            {% include 'page/admin/role/row_view.html' %}
-            {% endwith %}
-        {% endfor %}
-    </tbody>
-</table>
+{% include 'page/admin/role/add_button.html' %}
+{% include 'page/admin/role/table.html' with context %}
 {% endblock %}
