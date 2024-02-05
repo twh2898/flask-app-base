@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% set url_path = [
+    {'url': url_for('admin.index'), 'name': 'admin'},
+    {'url': url_for('admin.role.index'), 'name': 'roles'},
+] %}
 
 {% block header %}
 <h1>Roles</h1>

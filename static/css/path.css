@@ -1,0 +1,14 @@
+ul.url_path {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.url_path > li {
+    display: inline;
+    text-decoration: none;
+}
+
+ul.url_path > li:not(:first-child):before {
+    content: ' / ';
+}
