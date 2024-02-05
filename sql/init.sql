@@ -30,3 +30,7 @@ CREATE TABLE post (
   body TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
+
+INSERT INTO role (name) VALUES ("admin");
+INSERT INTO role (name) VALUES ("user");
+INSERT INTO role (name) VALUES ("readonly");
