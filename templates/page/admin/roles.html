@@ -10,40 +10,16 @@
     <thead>
         <tr>
             <th>Role Name</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th style="width: 10em">Edit</th>
+            <th style="width: 10em">Delete</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Role</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
-        <tr>
-            <form>
-                <td>
-                    <input type="text" class="form-control" />
-                </td>
-                <td>
-                    <a href="#">Edit</a>
-                </td>
-                <td>
-                    <button type="text" class="btn btn-danger btn-sm">Delete</button>
-                </td>
-            </form>
-        </tr>
+        {% for role in roles %}
+            {% with role=role %}
+            {% include 'page/admin/row_view.html' %}
+            {% endwith %}
+        {% endfor %}
     </tbody>
 </table>
-<form action="{{ url_for('auth.login') }}" method="POST" class="p-3 mx-auto border rounded">
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" name="username" autocomplete="username" class="form-control" id="username">
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="password">
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
 {% endblock %}
