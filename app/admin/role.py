@@ -113,7 +113,7 @@ def edit():
                            name=role['name'])
 
 
-@bp.route('/view', methods=('GET',))
+@bp.route('/view')
 @login_required
 @role_required('admin')
 def view():
