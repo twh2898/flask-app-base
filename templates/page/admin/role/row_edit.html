@@ -2,11 +2,9 @@
     <td>
         <input type="text" class="form-control" name="role" id="role-{{ key }}" value="{{ name }}" autofocus onfocus="const temp_value=this.value; this.value=''; this.value=temp_value">
     </td>
-    <td>
+    <td style="width: 15em" class="text-end">
         <button hx-put="{{ url_for('admin.role.edit') }}?role={{ id }}" class="btn btn-primary btn-sm">Save</button>
         <button hx-get="{{ url_for('admin.role.view') }}?role={{ id }}" class="btn btn-secondary btn-sm">Cancel</button>
-    </td>
-    <td>
         <button class="btn btn-danger btn-sm">Delete</button>
     </td>
 </tr>
