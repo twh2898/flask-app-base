@@ -1,4 +1,4 @@
-<table id="role-table" class="table">
+<table id="role-table" class="table" hx-get="{{ url_for('admin.role.table') }}" hx-trigger="newRole from:body">
     <thead>
         <tr>
             <th>Role Name</th>

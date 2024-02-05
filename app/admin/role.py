@@ -1,6 +1,6 @@
 
-from flask import (Blueprint, current_app, flash, g, redirect, render_template,
-                   request, session, url_for)
+from flask import (Blueprint, Response, current_app, flash, g, redirect,
+                   render_template, request, session, url_for)
 
 from ..auth import login_required, role_required
 from ..db import get_db
@@ -44,25 +44,26 @@ def edit():
 
     if request.method == "POST":
         name = request.form.get('name', None)
-        print('Add name', name)
 
         if name is None:
-            return 'Missing new name', 400
+            return render_template('page/admin/role/role_add.html', error='Missing name')
 
         name = name.strip()
 
         if len(name) == 0:
-            return 'Missing name', 400
+            return render_template('page/admin/role/role_add.html', error='Missing name')
 
         cur = db.execute('SELECT * FROM role WHERE name=?', (name,))
         exist = cur.fetchall()
         if len(exist) > 0:
-            return 'Role name already exists', 400
+            return render_template('page/admin/role/role_add.html', error='Name already exists')
 
         db.execute('INSERT INTO role (name) VALUES (?)', (name,))
         db.commit()
 
-        return table()
+        resp = Response(add())
+        resp.headers['HX-Trigger'] = 'newRole'
+        return resp
 
     key = request.args.get('role', None, type=int)
 
@@ -100,7 +101,7 @@ def edit():
         return render_template('page/admin/role/.html', id=role['id'],
                                name=role['name'])
 
-    elif request.method == "DELETE":
+    if request.method == "DELETE":
         db.execute('DELETE FROM role WHERE id=?', (key,))
         db.commit()
         return ''
