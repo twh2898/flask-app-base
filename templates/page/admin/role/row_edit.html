@@ -1,7 +1,9 @@
 <tr hx-target="this" hx-swap="outerHTML" hx-include="[name='role']">
     <td>
-        <input type="text" class="form-control" name="role" id="role-{{ key }}" value="{{ name }}" autofocus onfocus="const temp_value=this.value; this.value=''; this.value=temp_value">
+        <input type="text" class="form-control" name="role" id="role-{{ key }}" value="{{ name }}" autofocus
+            onfocus="const temp_value=this.value; this.value=''; this.value=temp_value">
     </td>
+    <td>{{ user_count }}</td>
     <td style="width: 15em" class="text-end">
         <button hx-put="{{ url_for('admin.role.edit') }}?role={{ id }}" class="btn btn-primary btn-sm">Save</button>
         <button hx-get="{{ url_for('admin.role.view') }}?role={{ id }}" class="btn btn-secondary btn-sm">Cancel</button>

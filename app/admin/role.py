@@ -11,7 +11,19 @@ bp = Blueprint('role', __name__, url_prefix='/role')
 def _get_roles():
     db = get_db()
     cur = db.execute('SELECT id, name FROM role')
-    return cur.fetchall()
+    rows = cur.fetchall()
+    roles = []
+    for row in rows:
+        id_, name = row['id'], row['name']
+        cur = db.execute('SELECT id FROM user_role WHERE rid=?', (id_,))
+        users = cur.fetchall()
+        user_count = len(users)
+        roles.append({
+            'id': id_,
+            'name': name,
+            'user_count': user_count,
+        })
+    return roles
 
 
 @bp.route('/')
