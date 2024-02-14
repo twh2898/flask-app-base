@@ -138,6 +138,37 @@ def login():
     return render_template('page/auth/login.html')
 
 
+@bp.route('/change_pass', methods=('GET', 'POST'))
+@login_required
+def change_pass():
+    if request.method == 'POST':
+        password = request.form.get('password', None)
+        new_password = request.form.get('new_password', None)
+        db = get_db()
+        error = None
+
+        if not password or not new_password:
+            error = 'Incorrect or invalid password'
+
+        else:
+            if not bcrypt.checkpw(password.encode(), g.user['password']):
+                error = 'Incorrect or invalid password'
+
+            if error is None:
+                new_password = new_password.encode()
+                salt = bcrypt.gensalt()
+                password_hash = bcrypt.hashpw(new_password, salt)
+
+                db.execute('UPDATE user SET password=? WHERE id=?',
+                           (password_hash, g.user['id']))
+                db.commit()
+                return logout()
+
+        flash(error)
+
+    return render_template('page/auth/change_pass.html')
+
+
 @bp.route('/logout')
 def logout():
     session.clear()

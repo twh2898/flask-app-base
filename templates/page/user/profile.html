@@ -19,6 +19,10 @@
             <td>Created</td>
             <td>{{ g.user['created'] }}</td>
         </tr>
+        <tr>
+            <td>Password</td>
+            <td><a class="btn btn-sm btn-secondary" href="{{ url_for('auth.change_pass') }}">Change Password</a></td>
+        </tr>
     </tbody>
 </table>
 {% endblock %}
